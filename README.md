@@ -1,6 +1,16 @@
 # Sistem Informasi Puskesmas
 
-Sistem informasi untuk pengelolaan data pasien, kunjungan, rekam medis, dan resep obat di Puskesmas.
+**Nama**: Muhammad Rizal Nurfirdaus  
+**NIM**: 20230810088  
+**Kelas**: TINFC-2023-04  
+**Mata Kuliah**: Testing dan Implementasi  
+**Dosen Pengampu**: Iwan Lesmana, S.Kom., M.Kom.
+
+---
+
+## Deskripsi
+
+Sistem informasi untuk pengelolaan data pasien, kunjungan, rekam medis, dan resep obat di Puskesmas. Aplikasi ini dibangun dengan arsitektur client-server menggunakan stack MERN (MySQL, Express, React, Node.js) dengan TypeScript untuk memastikan type safety dan maintainability code yang lebih baik.
 
 ## Fitur Utama
 
@@ -36,8 +46,9 @@ Sistem informasi untuk pengelolaan data pasien, kunjungan, rekam medis, dan rese
 
 ### Setup
 
-1. Clone repository dan masuk ke folder project
+1. Clone repository dari GitHub
 ```bash
+git clone https://github.com/MuhammadRizalNurfirdaus/Puskesmas.git
 cd Puskesmas
 ```
 
@@ -149,6 +160,73 @@ Puskesmas/
 - GET `/api/laporan/kunjungan` - Laporan kunjungan
 - GET `/api/laporan/pasien` - Statistik pasien
 - GET `/api/laporan/obat` - Laporan stok obat
+
+## Panduan Git Clone
+
+Untuk melakukan git clone dan menjalankan project ini, ikuti langkah-langkah berikut:
+
+### 1. Clone Repository
+```bash
+git clone https://github.com/MuhammadRizalNurfirdaus/Puskesmas.git
+cd Puskesmas
+```
+
+### 2. Install Dependencies
+```bash
+# Install dependencies root project
+npm install
+
+# Install dependencies backend
+cd backend
+npm install
+
+# Install dependencies frontend
+cd ../frontend
+npm install
+cd ..
+```
+
+### 3. Konfigurasi Database
+```bash
+# Buat file .env di folder backend
+cd backend
+cp .env.example .env
+```
+
+Edit file `.env` dengan konfigurasi database Anda:
+```env
+DB_HOST=localhost
+DB_PORT=3306
+DB_USERNAME=root
+DB_PASSWORD=your_password
+DB_NAME=puskesmas_db
+JWT_SECRET=your_jwt_secret_key
+PORT=5000
+```
+
+### 4. Buat Database MySQL
+Buka MySQL client dan jalankan:
+```sql
+CREATE DATABASE puskesmas_db;
+```
+
+### 5. Jalankan Aplikasi
+Kembali ke root folder dan jalankan:
+```bash
+cd ..
+npm run dev
+```
+
+Atau jalankan secara terpisah:
+- **Backend**: `cd backend && npm run dev` (http://localhost:5000)
+- **Frontend**: `cd frontend && npm run dev` (http://localhost:3000)
+
+### 6. Akses Aplikasi
+Buka browser dan akses `http://localhost:3000` untuk menggunakan aplikasi.
+
+## Repository
+
+GitHub: [https://github.com/MuhammadRizalNurfirdaus/Puskesmas.git](https://github.com/MuhammadRizalNurfirdaus/Puskesmas.git)
 
 ## Lisensi
 
