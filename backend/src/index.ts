@@ -39,22 +39,41 @@ app.get('/api/health', (req, res) => {
 // Error handler
 app.use(errorHandler);
 
-// Initialize database and start server
+// Start server without waiting for database
+app.listen(PORT, () => {
+  console.log(`🚀 Server is running on port ${PORT}`);
+  console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
+});
+
+// Initialize database connection (non-blocking)
 AppDataSource.initialize()
   .then(async () => {
     console.log('✅ Database connected successfully');
     
     // Seed initial data
-    await seedDatabase();
-    
-    app.listen(PORT, () => {
-      console.log(`🚀 Server is running on port ${PORT}`);
-      console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
-    });
+    try {
+      await seedDatabase();
+      console.log('✅ Database seeded successfully');
+    } catch (error) {
+      console.error('⚠️  Warning: Error seeding database:', error);
+    }
   })
   .catch((error) => {
     console.error('❌ Error connecting to database:', error);
-    process.exit(1);
+    console.error('⚠️  Server is running but database is not connected.');
+    console.error('📝 Please check your database configuration in .env file:');
+    console.error('   - DB_HOST:', process.env.DB_HOST);
+    console.error('   - DB_PORT:', process.env.DB_PORT);
+    console.error('   - DB_USERNAME:', process.env.DB_USERNAME);
+    console.error('   - DB_DATABASE:', process.env.DB_DATABASE);
+    console.error('\n💡 To setup the database, run:');
+    console.error('   sudo mariadb');
+    console.error('   Then execute these SQL commands:');
+    console.error('   CREATE DATABASE IF NOT EXISTS puskesmas_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;');
+    console.error('   CREATE USER IF NOT EXISTS \'puskesmas_user\'@\'localhost\' IDENTIFIED BY \'puskesmas123\';');
+    console.error('   GRANT ALL PRIVILEGES ON puskesmas_db.* TO \'puskesmas_user\'@\'localhost\';');
+    console.error('   FLUSH PRIVILEGES;');
+    console.error('   EXIT;');
   });
 
 export default app;

@@ -61,8 +61,7 @@ npm install
 ```bash
 cd backend
 npm install
-cp .env.example .env
-# Edit .env dengan konfigurasi database Anda
+# File .env sudah tersedia dengan konfigurasi default
 ```
 
 4. Setup Frontend
@@ -71,23 +70,54 @@ cd ../frontend
 npm install
 ```
 
-5. Setup Database
-- Buat database MySQL dengan nama `puskesmas_db`
-```sql
-CREATE DATABASE puskesmas_db;
-```
-- Database akan otomatis ter-setup saat aplikasi dijalankan pertama kali
+5. **Setup Database** (PENTING!)
+   
+   Database sudah ada user dan konfigurasi, tapi perlu dibuat database-nya:
+   
+   ```bash
+   sudo mariadb
+   ```
+   
+   Jalankan SQL commands berikut di MariaDB:
+   ```sql
+   CREATE DATABASE IF NOT EXISTS puskesmas_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   CREATE USER IF NOT EXISTS 'puskesmas_user'@'localhost' IDENTIFIED BY 'puskesmas123';
+   GRANT ALL PRIVILEGES ON puskesmas_db.* TO 'puskesmas_user'@'localhost';
+   FLUSH PRIVILEGES;
+   EXIT;
+   ```
+   
+   Test koneksi database:
+   ```bash
+   mariadb -u puskesmas_user -p'puskesmas123' puskesmas_db -e "SELECT 'Success!' as Status;"
+   ```
+   
+   **Atau lihat file `DATABASE_SETUP.md` untuk panduan lengkap**
 
 6. Jalankan aplikasi
 
-Dari root folder:
-```bash
-npm run dev
-```
+   **Cara Mudah (Recommended):**
+   ```bash
+   ./start-app.sh
+   ```
+   
+   **Atau manual:**
+   ```bash
+   # Terminal 1 - Backend
+   cd backend && npm run dev
+   
+   # Terminal 2 - Frontend
+   cd frontend && npm run dev
+   ```
+   
+   Untuk stop aplikasi:
+   ```bash
+   ./stop-app.sh
+   ```
 
-Atau jalankan secara terpisah:
-- Backend: `cd backend && npm run dev` (http://localhost:5000)
-- Frontend: `cd frontend && npm run dev` (http://localhost:3000)
+Akses aplikasi:
+- Frontend: http://localhost:5173
+- Backend API: http://localhost:5000
 
 ## Default Users
 

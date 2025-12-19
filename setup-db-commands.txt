@@ -1,0 +1,23 @@
+================================
+DATABASE SETUP COMMANDS
+================================
+
+1. Open MariaDB as root:
+   sudo mariadb
+
+2. Copy and paste these SQL commands:
+
+CREATE DATABASE IF NOT EXISTS puskesmas_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER IF NOT EXISTS 'puskesmas_user'@'localhost' IDENTIFIED BY 'puskesmas123';
+GRANT ALL PRIVILEGES ON puskesmas_db.* TO 'puskesmas_user'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+
+3. Test the connection:
+   mariadb -u puskesmas_user -p'puskesmas123' puskesmas_db -e "SELECT 'Success!' as Status;"
+
+================================
+If the test shows "Success!", you're ready to run the application!
+
+Then run: ./start-app.sh
+================================
