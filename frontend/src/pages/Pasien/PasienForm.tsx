@@ -57,10 +57,14 @@ export default function PasienForm() {
   };
 
   return (
-    <div>
-      <h1 className="mb-20">{id ? 'Edit' : 'Tambah'} Pasien</h1>
+    <div className="space-y-6">
+      <div className="bg-gradient-to-r from-brand-700 to-brand-900 rounded-2xl shadow-sm ring-1 ring-black/5 p-8 text-white">
+        <h1 className="text-3xl font-extrabold">{id ? 'Edit' : 'Tambah'} Pasien</h1>
+        <p className="mt-2 text-white/80">Lengkapi data pasien untuk kebutuhan pelayanan.</p>
+      </div>
 
       <div className="card">
+        <div className="card-body">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label className="form-label">NIK *</label>
@@ -171,15 +175,16 @@ export default function PasienForm() {
             />
           </div>
 
-          <div className="flex gap-10">
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
+            <button type="button" className="btn btn-ghost" onClick={() => navigate('/pasien')}>
+              Batal
+            </button>
             <button type="submit" className="btn btn-primary" disabled={loading}>
               {loading ? 'Menyimpan...' : 'Simpan'}
             </button>
-            <button type="button" className="btn btn-secondary" onClick={() => navigate('/pasien')}>
-              Batal
-            </button>
           </div>
         </form>
+        </div>
       </div>
     </div>
   );

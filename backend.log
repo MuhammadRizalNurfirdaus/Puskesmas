@@ -1,0 +1,502 @@
+
+> puskesmas-backend@1.0.0 dev
+> nodemon src/index.ts
+
+[33m[nodemon] 3.1.11[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: ts,json[39m
+[32m[nodemon] starting `ts-node src/index.ts`[39m
+🚀 Server is running on port 5000
+📊 Environment: development
+[90m[4mquery:[24m[39m [94mSELECT[0m [95mversion[0m[37m([0m[37m)[0m
+[90m[4mquery:[24m[39m [37mSTART[0m [37mTRANSACTION[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [94mDATABASE[0m[37m([0m[37m)[0m [94mAS[0m [37m`db_name`[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [37m`TABLE_SCHEMA`[0m[37m,[0m [37m`TABLE_NAME`[0m[37m,[0m [37m`TABLE_COMMENT`[0m [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`TABLES`[0m [94mWHERE[0m [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m [94mAND[0m [37m`TABLE_NAME`[0m [37m=[0m [37m'obat'[0m [94mUNION[0m [94mSELECT[0m [37m`TABLE_SCHEMA`[0m[37m,[0m [37m`TABLE_NAME`[0m[37m,[0m [37m`TABLE_COMMENT`[0m [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`TABLES`[0m [94mWHERE[0m [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m [94mAND[0m [37m`TABLE_NAME`[0m [37m=[0m [37m'resep_detail'[0m [94mUNION[0m [94mSELECT[0m [37m`TABLE_SCHEMA`[0m[37m,[0m [37m`TABLE_NAME`[0m[37m,[0m [37m`TABLE_COMMENT`[0m [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`TABLES`[0m [94mWHERE[0m [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m [94mAND[0m [37m`TABLE_NAME`[0m [37m=[0m [37m'resep'[0m [94mUNION[0m [94mSELECT[0m [37m`TABLE_SCHEMA`[0m[37m,[0m [37m`TABLE_NAME`[0m[37m,[0m [37m`TABLE_COMMENT`[0m [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`TABLES`[0m [94mWHERE[0m [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m [94mAND[0m [37m`TABLE_NAME`[0m [37m=[0m [37m'rekam_medis'[0m [94mUNION[0m [94mSELECT[0m [37m`TABLE_SCHEMA`[0m[37m,[0m [37m`TABLE_NAME`[0m[37m,[0m [37m`TABLE_COMMENT`[0m [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`TABLES`[0m [94mWHERE[0m [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m [94mAND[0m [37m`TABLE_NAME`[0m [37m=[0m [37m'kunjungan'[0m [94mUNION[0m [94mSELECT[0m [37m`TABLE_SCHEMA`[0m[37m,[0m [37m`TABLE_NAME`[0m[37m,[0m [37m`TABLE_COMMENT`[0m [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`TABLES`[0m [94mWHERE[0m [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m [94mAND[0m [37m`TABLE_NAME`[0m [37m=[0m [37m'pasien'[0m [94mUNION[0m [94mSELECT[0m [37m`TABLE_SCHEMA`[0m[37m,[0m [37m`TABLE_NAME`[0m[37m,[0m [37m`TABLE_COMMENT`[0m [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`TABLES`[0m [94mWHERE[0m [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m [94mAND[0m [37m`TABLE_NAME`[0m [37m=[0m [37m'users'[0m [94mUNION[0m [94mSELECT[0m [37m`TABLE_SCHEMA`[0m[37m,[0m [37m`TABLE_NAME`[0m[37m,[0m [37m`TABLE_COMMENT`[0m [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`TABLES`[0m [94mWHERE[0m [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m [94mAND[0m [37m`TABLE_NAME`[0m [37m=[0m [37m'transaksi'[0m
+[90m[4mquery:[24m[39m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m
+                    [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`COLUMNS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'obat'[0m
+                 [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m
+                    [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`COLUMNS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'resep_detail'[0m
+                 [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m
+                    [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`COLUMNS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'resep'[0m
+                 [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m
+                    [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`COLUMNS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'rekam_medis'[0m
+                 [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m
+                    [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`COLUMNS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'kunjungan'[0m
+                 [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m
+                    [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`COLUMNS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'pasien'[0m
+                 [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m
+                    [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`COLUMNS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'users'[0m
+                 [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m
+                    [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`COLUMNS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'transaksi'[0m
+                
+[90m[4mquery:[24m[39m [94mSELECT[0m [37m*[0m [94mFROM[0m [37m([0m
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'obat'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'resep_detail'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'resep'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'rekam_medis'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'kunjungan'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'pasien'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'users'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'transaksi'[0m
+            [37m)[0m [37m`kcu`[0m [94mWHERE[0m [37m`CONSTRAINT_NAME`[0m [37m=[0m [37m'PRIMARY'[0m
+[90m[4mquery:[24m[39m 
+            [94mSELECT[0m
+                [37m`SCHEMA_NAME`[0m[37m,[0m
+                [37m`DEFAULT_CHARACTER_SET_NAME`[0m [94mas[0m [37m`CHARSET`[0m[37m,[0m
+                [37m`DEFAULT_COLLATION_NAME`[0m [94mAS[0m [37m`COLLATION`[0m
+            [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`SCHEMATA`[0m
+            
+[90m[4mquery:[24m[39m 
+            [94mSELECT[0m
+                [37m`s`[0m[37m.[0m[37m*[0m
+            [94mFROM[0m [37m([0m
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`STATISTICS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'obat'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`STATISTICS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'resep_detail'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`STATISTICS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'resep'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`STATISTICS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'rekam_medis'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`STATISTICS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'kunjungan'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`STATISTICS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'pasien'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`STATISTICS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'users'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`STATISTICS`[0m
+                [94mWHERE[0m
+                    [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'transaksi'[0m
+            [37m)[0m [37m`s`[0m
+            [94mLEFT JOIN[0m [37m([0m
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'obat'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'resep_detail'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'resep'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'rekam_medis'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'kunjungan'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'pasien'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'users'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'transaksi'[0m
+            [37m)[0m [37m`rc`[0m
+                [94mON[0m
+                    [37m`s`[0m[37m.[0m[37m`INDEX_NAME`[0m [37m=[0m [37m`rc`[0m[37m.[0m[37m`CONSTRAINT_NAME`[0m
+                    [94mAND[0m
+                    [37m`s`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m`rc`[0m[37m.[0m[37m`CONSTRAINT_SCHEMA`[0m
+            [94mWHERE[0m
+                [37m`s`[0m[37m.[0m[37m`INDEX_NAME`[0m [37m!=[0m [37m'PRIMARY'[0m
+                [94mAND[0m
+                [37m`rc`[0m[37m.[0m[37m`CONSTRAINT_NAME`[0m [94mIS NULL[0m
+            
+[90m[4mquery:[24m[39m 
+            [94mSELECT[0m
+                [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m[37m,[0m
+                [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m[37m,[0m
+                [37m`kcu`[0m[37m.[0m[37m`CONSTRAINT_NAME`[0m[37m,[0m
+                [37m`kcu`[0m[37m.[0m[37m`COLUMN_NAME`[0m[37m,[0m
+                [37m`kcu`[0m[37m.[0m[37m`REFERENCED_TABLE_SCHEMA`[0m[37m,[0m
+                [37m`kcu`[0m[37m.[0m[37m`REFERENCED_TABLE_NAME`[0m[37m,[0m
+                [37m`kcu`[0m[37m.[0m[37m`REFERENCED_COLUMN_NAME`[0m[37m,[0m
+                [37m`rc`[0m[37m.[0m[37m`DELETE_RULE`[0m [37m`ON_DELETE`[0m[37m,[0m
+                [37m`rc`[0m[37m.[0m[37m`UPDATE_RULE`[0m [37m`ON_UPDATE`[0m
+            [94mFROM[0m [37m([0m
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'obat'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'resep_detail'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'resep'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'rekam_medis'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'kunjungan'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'pasien'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'users'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`KEY_COLUMN_USAGE`[0m [37m`kcu`[0m
+                [94mWHERE[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m'transaksi'[0m
+            [37m)[0m [37m`kcu`[0m
+            [94mINNER JOIN[0m [37m([0m
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'obat'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'resep_detail'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'resep'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'rekam_medis'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'kunjungan'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'pasien'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'users'[0m
+             [94mUNION[0m 
+                [94mSELECT[0m
+                    [37m*[0m
+                [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`REFERENTIAL_CONSTRAINTS`[0m
+                [94mWHERE[0m
+                    [37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m
+                    [94mAND[0m
+                    [37m`TABLE_NAME`[0m [37m=[0m [37m'transaksi'[0m
+            [37m)[0m [37m`rc`[0m
+                [94mON[0m
+                    [37m`rc`[0m[37m.[0m[37m`CONSTRAINT_SCHEMA`[0m [37m=[0m [37m`kcu`[0m[37m.[0m[37m`CONSTRAINT_SCHEMA`[0m
+                    [94mAND[0m
+                    [37m`rc`[0m[37m.[0m[37m`TABLE_NAME`[0m [37m=[0m [37m`kcu`[0m[37m.[0m[37m`TABLE_NAME`[0m
+                    [94mAND[0m
+                    [37m`rc`[0m[37m.[0m[37m`CONSTRAINT_NAME`[0m [37m=[0m [37m`kcu`[0m[37m.[0m[37m`CONSTRAINT_NAME`[0m
+            
+[90m[4mquery:[24m[39m [94mSELECT[0m [37m*[0m [94mFROM[0m [37m`INFORMATION_SCHEMA`[0m[37m.[0m[37m`COLUMNS`[0m [94mWHERE[0m [37m`TABLE_SCHEMA`[0m [37m=[0m [37m'puskesmas_db'[0m [94mAND[0m [37m`TABLE_NAME`[0m [37m=[0m [37m'typeorm_metadata'[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`obat`[0m [37mCHANGE[0m [37m`deskripsi`[0m [37m`deskripsi`[0m [94mtext[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`obat`[0m [37mCHANGE[0m [37m`harga`[0m [37m`harga`[0m [94mdecimal[0m[37m([0m[32m10[0m[37m,[0m[32m2[0m[37m)[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`resep_detail`[0m [37mCHANGE[0m [37m`keterangan`[0m [37m`keterangan`[0m [94mtext[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`resep`[0m [94mDROP[0m [94mFOREIGN KEY[0m [37m`FK_5788a71e03c73d7a4203700cc14`[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`resep`[0m [37mCHANGE[0m [37m`idApoteker`[0m [37m`idApoteker`[0m [37mint[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`resep`[0m [37mCHANGE[0m [37m`catatan`[0m [37m`catatan`[0m [94mtext[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`resep`[0m [37mCHANGE[0m [37m`tanggalDilayani`[0m [37m`tanggalDilayani`[0m [94mdatetime[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`rekam_medis`[0m [37mCHANGE[0m [37m`tekananDarah`[0m [37m`tekananDarah`[0m [94mvarchar[0m[37m([0m[32m255[0m[37m)[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`rekam_medis`[0m [37mCHANGE[0m [37m`beratBadan`[0m [37m`beratBadan`[0m [94mdecimal[0m[37m([0m[32m5[0m[37m,[0m[32m2[0m[37m)[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`rekam_medis`[0m [37mCHANGE[0m [37m`tinggiBadan`[0m [37m`tinggiBadan`[0m [94mdecimal[0m[37m([0m[32m5[0m[37m,[0m[32m2[0m[37m)[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`rekam_medis`[0m [37mCHANGE[0m [37m`suhuTubuh`[0m [37m`suhuTubuh`[0m [94mdecimal[0m[37m([0m[32m4[0m[37m,[0m[32m1[0m[37m)[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`rekam_medis`[0m [37mCHANGE[0m [37m`tindakan`[0m [37m`tindakan`[0m [94mtext[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`rekam_medis`[0m [37mCHANGE[0m [37m`catatan`[0m [37m`catatan`[0m [94mtext[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`kunjungan`[0m [37mCHANGE[0m [37m`keluhan`[0m [37m`keluhan`[0m [94mtext[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`pasien`[0m [37mCHANGE[0m [37m`noBPJS`[0m [37m`noBPJS`[0m [94mvarchar[0m[37m([0m[32m255[0m[37m)[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`pasien`[0m [37mCHANGE[0m [37m`golonganDarah`[0m [37m`golonganDarah`[0m [94mvarchar[0m[37m([0m[32m255[0m[37m)[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`pasien`[0m [37mCHANGE[0m [37m`riwayatAlergi`[0m [37m`riwayatAlergi`[0m [94mtext[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`users`[0m [37mCHANGE[0m [37m`nip`[0m [37m`nip`[0m [94mvarchar[0m[37m([0m[32m255[0m[37m)[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`users`[0m [37mCHANGE[0m [37m`noTelp`[0m [37m`noTelp`[0m [94mvarchar[0m[37m([0m[32m255[0m[37m)[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`transaksi`[0m [94mDROP[0m [94mFOREIGN KEY[0m [37m`FK_d30ab783f0e3f587811efe359b2`[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`transaksi`[0m [94mDROP[0m [94mFOREIGN KEY[0m [37m`FK_9ea46cb299c7be7f1a545412fac`[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`transaksi`[0m [37mCHANGE[0m [37m`idKasir`[0m [37m`idKasir`[0m [37mint[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`transaksi`[0m [37mCHANGE[0m [37m`idVerifikator`[0m [37m`idVerifikator`[0m [37mint[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`transaksi`[0m [37mCHANGE[0m [37m`keterangan`[0m [37m`keterangan`[0m [94mtext[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`transaksi`[0m [37mCHANGE[0m [37m`catatanVerifikasi`[0m [37m`catatanVerifikasi`[0m [94mtext[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`transaksi`[0m [37mCHANGE[0m [37m`tanggalVerifikasi`[0m [37m`tanggalVerifikasi`[0m [94mdatetime[0m [94mNULL[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`resep`[0m [94mADD CONSTRAINT[0m [37m`FK_5788a71e03c73d7a4203700cc14`[0m [94mFOREIGN KEY[0m [37m([0m[37m`idApoteker`[0m[37m)[0m [94mREFERENCES[0m [37m`users`[0m[37m([0m[37m`idUser`[0m[37m)[0m [94mON[0m [94mDELETE[0m [37mNO[0m [37mACTION[0m [94mON[0m [94mUPDATE[0m [37mNO[0m [37mACTION[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`transaksi`[0m [94mADD CONSTRAINT[0m [37m`FK_d30ab783f0e3f587811efe359b2`[0m [94mFOREIGN KEY[0m [37m([0m[37m`idKasir`[0m[37m)[0m [94mREFERENCES[0m [37m`users`[0m[37m([0m[37m`idUser`[0m[37m)[0m [94mON[0m [94mDELETE[0m [37mNO[0m [37mACTION[0m [94mON[0m [94mUPDATE[0m [37mNO[0m [37mACTION[0m
+[90m[4mquery:[24m[39m [94mALTER TABLE[0m [37m`transaksi`[0m [94mADD CONSTRAINT[0m [37m`FK_9ea46cb299c7be7f1a545412fac`[0m [94mFOREIGN KEY[0m [37m([0m[37m`idVerifikator`[0m[37m)[0m [94mREFERENCES[0m [37m`users`[0m[37m([0m[37m`idUser`[0m[37m)[0m [94mON[0m [94mDELETE[0m [37mNO[0m [37mACTION[0m [94mON[0m [94mUPDATE[0m [37mNO[0m [37mACTION[0m
+[90m[4mquery:[24m[39m [94mCOMMIT[0m
+✅ Database connected successfully
+[90m[4mquery:[24m[39m [94mSELECT[0m [95mCOUNT[0m[37m([0m[32m1[0m[37m)[0m [94mAS[0m [37m`cnt`[0m [94mFROM[0m [37m`users`[0m [37m`User`[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [95mCOUNT[0m[37m([0m[32m1[0m[37m)[0m [94mAS[0m [37m`cnt`[0m [94mFROM[0m [37m`obat`[0m [37m`Obat`[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [95mCOUNT[0m[37m([0m[32m1[0m[37m)[0m [94mAS[0m [37m`cnt`[0m [94mFROM[0m [37m`pasien`[0m [37m`Pasien`[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [37m`User`[0m[37m.[0m[37m`idUser`[0m [94mAS[0m [37m`User_idUser`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`username`[0m [94mAS[0m [37m`User_username`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`password`[0m [94mAS[0m [37m`User_password`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`role`[0m [94mAS[0m [37m`User_role`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`namaLengkap`[0m [94mAS[0m [37m`User_namaLengkap`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`nip`[0m [94mAS[0m [37m`User_nip`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`noTelp`[0m [94mAS[0m [37m`User_noTelp`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`isActive`[0m [94mAS[0m [37m`User_isActive`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`createdAt`[0m [94mAS[0m [37m`User_createdAt`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`updatedAt`[0m [94mAS[0m [37m`User_updatedAt`[0m [94mFROM[0m [37m`users`[0m [37m`User`[0m [94mWHERE[0m [37m([0m[37m([0m[37m`User`[0m[37m.[0m[37m`role`[0m [37m=[0m [37m?[0m[37m)[0m[37m)[0m [94mLIMIT[0m [32m1[0m [90m-- PARAMETERS: ["pendaftaran"][0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [37m`Pasien`[0m[37m.[0m[37m`idPasien`[0m [94mAS[0m [37m`Pasien_idPasien`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`noRekamMedis`[0m [94mAS[0m [37m`Pasien_noRekamMedis`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`nik`[0m [94mAS[0m [37m`Pasien_nik`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`namaLengkap`[0m [94mAS[0m [37m`Pasien_namaLengkap`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`tanggalLahir`[0m [94mAS[0m [37m`Pasien_tanggalLahir`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`jenisKelamin`[0m [94mAS[0m [37m`Pasien_jenisKelamin`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`alamat`[0m [94mAS[0m [37m`Pasien_alamat`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`noTelp`[0m [94mAS[0m [37m`Pasien_noTelp`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`statusPembayaran`[0m [94mAS[0m [37m`Pasien_statusPembayaran`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`noBPJS`[0m [94mAS[0m [37m`Pasien_noBPJS`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`golonganDarah`[0m [94mAS[0m [37m`Pasien_golonganDarah`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`riwayatAlergi`[0m [94mAS[0m [37m`Pasien_riwayatAlergi`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`createdAt`[0m [94mAS[0m [37m`Pasien_createdAt`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`updatedAt`[0m [94mAS[0m [37m`Pasien_updatedAt`[0m[37m,[0m [37m`Pasien`[0m[37m.[0m[37m`createdById`[0m [94mAS[0m [37m`Pasien_createdById`[0m [94mFROM[0m [37m`pasien`[0m [37m`Pasien`[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [37m`User`[0m[37m.[0m[37m`idUser`[0m [94mAS[0m [37m`User_idUser`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`username`[0m [94mAS[0m [37m`User_username`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`password`[0m [94mAS[0m [37m`User_password`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`role`[0m [94mAS[0m [37m`User_role`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`namaLengkap`[0m [94mAS[0m [37m`User_namaLengkap`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`nip`[0m [94mAS[0m [37m`User_nip`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`noTelp`[0m [94mAS[0m [37m`User_noTelp`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`isActive`[0m [94mAS[0m [37m`User_isActive`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`createdAt`[0m [94mAS[0m [37m`User_createdAt`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`updatedAt`[0m [94mAS[0m [37m`User_updatedAt`[0m [94mFROM[0m [37m`users`[0m [37m`User`[0m [94mWHERE[0m [37m([0m[37m([0m[37m`User`[0m[37m.[0m[37m`role`[0m [37m=[0m [37m?[0m[37m)[0m[37m)[0m [90m-- PARAMETERS: ["dokter"][0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [37m`User`[0m[37m.[0m[37m`idUser`[0m [94mAS[0m [37m`User_idUser`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`username`[0m [94mAS[0m [37m`User_username`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`password`[0m [94mAS[0m [37m`User_password`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`role`[0m [94mAS[0m [37m`User_role`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`namaLengkap`[0m [94mAS[0m [37m`User_namaLengkap`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`nip`[0m [94mAS[0m [37m`User_nip`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`noTelp`[0m [94mAS[0m [37m`User_noTelp`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`isActive`[0m [94mAS[0m [37m`User_isActive`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`createdAt`[0m [94mAS[0m [37m`User_createdAt`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`updatedAt`[0m [94mAS[0m [37m`User_updatedAt`[0m [94mFROM[0m [37m`users`[0m [37m`User`[0m [94mWHERE[0m [37m([0m[37m([0m[37m`User`[0m[37m.[0m[37m`role`[0m [37m=[0m [37m?[0m[37m)[0m[37m)[0m [90m-- PARAMETERS: ["apoteker"][0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [37m`Obat`[0m[37m.[0m[37m`idObat`[0m [94mAS[0m [37m`Obat_idObat`[0m[37m,[0m [37m`Obat`[0m[37m.[0m[37m`kodeObat`[0m [94mAS[0m [37m`Obat_kodeObat`[0m[37m,[0m [37m`Obat`[0m[37m.[0m[37m`namaObat`[0m [94mAS[0m [37m`Obat_namaObat`[0m[37m,[0m [37m`Obat`[0m[37m.[0m[37m`deskripsi`[0m [94mAS[0m [37m`Obat_deskripsi`[0m[37m,[0m [37m`Obat`[0m[37m.[0m[37m`satuan`[0m [94mAS[0m [37m`Obat_satuan`[0m[37m,[0m [37m`Obat`[0m[37m.[0m[37m`stok`[0m [94mAS[0m [37m`Obat_stok`[0m[37m,[0m [37m`Obat`[0m[37m.[0m[37m`stokMinimal`[0m [94mAS[0m [37m`Obat_stokMinimal`[0m[37m,[0m [37m`Obat`[0m[37m.[0m[37m`harga`[0m [94mAS[0m [37m`Obat_harga`[0m[37m,[0m [37m`Obat`[0m[37m.[0m[37m`isActive`[0m [94mAS[0m [37m`Obat_isActive`[0m[37m,[0m [37m`Obat`[0m[37m.[0m[37m`createdAt`[0m [94mAS[0m [37m`Obat_createdAt`[0m[37m,[0m [37m`Obat`[0m[37m.[0m[37m`updatedAt`[0m [94mAS[0m [37m`Obat_updatedAt`[0m [94mFROM[0m [37m`obat`[0m [37m`Obat`[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [37m`User`[0m[37m.[0m[37m`idUser`[0m [94mAS[0m [37m`User_idUser`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`username`[0m [94mAS[0m [37m`User_username`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`password`[0m [94mAS[0m [37m`User_password`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`role`[0m [94mAS[0m [37m`User_role`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`namaLengkap`[0m [94mAS[0m [37m`User_namaLengkap`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`nip`[0m [94mAS[0m [37m`User_nip`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`noTelp`[0m [94mAS[0m [37m`User_noTelp`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`isActive`[0m [94mAS[0m [37m`User_isActive`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`createdAt`[0m [94mAS[0m [37m`User_createdAt`[0m[37m,[0m [37m`User`[0m[37m.[0m[37m`updatedAt`[0m [94mAS[0m [37m`User_updatedAt`[0m [94mFROM[0m [37m`users`[0m [37m`User`[0m [94mWHERE[0m [37m([0m[37m([0m[37m`User`[0m[37m.[0m[37m`role`[0m [37m=[0m [37m?[0m[37m)[0m[37m)[0m [94mLIMIT[0m [32m1[0m [90m-- PARAMETERS: ["pendaftaran"][0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [95mCOUNT[0m[37m([0m[32m1[0m[37m)[0m [94mAS[0m [37m`cnt`[0m [94mFROM[0m [37m`kunjungan`[0m [37m`Kunjungan`[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [37m`Kunjungan`[0m[37m.[0m[37m`idKunjungan`[0m [94mAS[0m [37m`Kunjungan_idKunjungan`[0m[37m,[0m [37m`Kunjungan`[0m[37m.[0m[37m`noKunjungan`[0m [94mAS[0m [37m`Kunjungan_noKunjungan`[0m[37m,[0m [37m`Kunjungan`[0m[37m.[0m[37m`tanggalKunjungan`[0m [94mAS[0m [37m`Kunjungan_tanggalKunjungan`[0m[37m,[0m [37m`Kunjungan`[0m[37m.[0m[37m`jamKunjungan`[0m [94mAS[0m [37m`Kunjungan_jamKunjungan`[0m[37m,[0m [37m`Kunjungan`[0m[37m.[0m[37m`jenisKunjungan`[0m [94mAS[0m [37m`Kunjungan_jenisKunjungan`[0m[37m,[0m [37m`Kunjungan`[0m[37m.[0m[37m`keluhan`[0m [94mAS[0m [37m`Kunjungan_keluhan`[0m[37m,[0m [37m`Kunjungan`[0m[37m.[0m[37m`status`[0m [94mAS[0m [37m`Kunjungan_status`[0m[37m,[0m [37m`Kunjungan`[0m[37m.[0m[37m`idPasien`[0m [94mAS[0m [37m`Kunjungan_idPasien`[0m[37m,[0m [37m`Kunjungan`[0m[37m.[0m[37m`idPetugasPendaftaran`[0m [94mAS[0m [37m`Kunjungan_idPetugasPendaftaran`[0m[37m,[0m [37m`Kunjungan`[0m[37m.[0m[37m`createdAt`[0m [94mAS[0m [37m`Kunjungan_createdAt`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`idPasien`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_idPasien`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`noRekamMedis`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_noRekamMedis`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`nik`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_nik`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`namaLengkap`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_namaLengkap`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`tanggalLahir`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_tanggalLahir`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`jenisKelamin`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_jenisKelamin`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`alamat`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_alamat`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`noTelp`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_noTelp`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`statusPembayaran`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_statusPembayaran`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`noBPJS`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_noBPJS`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`golonganDarah`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_golonganDarah`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`riwayatAlergi`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_riwayatAlergi`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`createdAt`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_createdAt`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`updatedAt`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_updatedAt`[0m[37m,[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`createdById`[0m [94mAS[0m [37m`Kunjungan__Kunjungan_pasien_createdById`[0m [94mFROM[0m [37m`kunjungan`[0m [37m`Kunjungan`[0m [94mLEFT JOIN[0m [37m`pasien`[0m [37m`Kunjungan__Kunjungan_pasien`[0m [94mON[0m [37m`Kunjungan__Kunjungan_pasien`[0m[37m.[0m[37m`idPasien`[0m[37m=[0m[37m`Kunjungan`[0m[37m.[0m[37m`idPasien`[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [95mCOUNT[0m[37m([0m[32m1[0m[37m)[0m [94mAS[0m [37m`cnt`[0m [94mFROM[0m [37m`rekam_medis`[0m [37m`RekamMedis`[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [37m`RekamMedis`[0m[37m.[0m[37m`idRekamMedis`[0m [94mAS[0m [37m`RekamMedis_idRekamMedis`[0m[37m,[0m [37m`RekamMedis`[0m[37m.[0m[37m`idKunjungan`[0m [94mAS[0m [37m`RekamMedis_idKunjungan`[0m[37m,[0m [37m`RekamMedis`[0m[37m.[0m[37m`idDokter`[0m [94mAS[0m [37m`RekamMedis_idDokter`[0m[37m,[0m [37m`RekamMedis`[0m[37m.[0m[37m`anamnesa`[0m [94mAS[0m [37m`RekamMedis_anamnesa`[0m[37m,[0m [37m`RekamMedis`[0m[37m.[0m[37m`pemeriksaanFisik`[0m [94mAS[0m [37m`RekamMedis_pemeriksaanFisik`[0m[37m,[0m [37m`RekamMedis`[0m[37m.[0m[37m`tekananDarah`[0m [94mAS[0m [37m`RekamMedis_tekananDarah`[0m[37m,[0m [37m`RekamMedis`[0m[37m.[0m[37m`beratBadan`[0m [94mAS[0m [37m`RekamMedis_beratBadan`[0m[37m,[0m [37m`RekamMedis`[0m[37m.[0m[37m`tinggiBadan`[0m [94mAS[0m [37m`RekamMedis_tinggiBadan`[0m[37m,[0m [37m`RekamMedis`[0m[37m.[0m[37m`suhuTubuh`[0m [94mAS[0m [37m`RekamMedis_suhuTubuh`[0m[37m,[0m [37m`RekamMedis`[0m[37m.[0m[37m`diagnosis`[0m [94mAS[0m [37m`RekamMedis_diagnosis`[0m[37m,[0m [37m`RekamMedis`[0m[37m.[0m[37m`tindakan`[0m [94mAS[0m [37m`RekamMedis_tindakan`[0m[37m,[0m [37m`RekamMedis`[0m[37m.[0m[37m`catatan`[0m [94mAS[0m [37m`RekamMedis_catatan`[0m[37m,[0m [37m`RekamMedis`[0m[37m.[0m[37m`createdAt`[0m [94mAS[0m [37m`RekamMedis_createdAt`[0m[37m,[0m [37m`RekamMedis`[0m[37m.[0m[37m`updatedAt`[0m [94mAS[0m [37m`RekamMedis_updatedAt`[0m[37m,[0m [37m`RekamMedis__RekamMedis_kunjungan`[0m[37m.[0m[37m`idKunjungan`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_kunjungan_idKunjungan`[0m[37m,[0m [37m`RekamMedis__RekamMedis_kunjungan`[0m[37m.[0m[37m`noKunjungan`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_kunjungan_noKunjungan`[0m[37m,[0m [37m`RekamMedis__RekamMedis_kunjungan`[0m[37m.[0m[37m`tanggalKunjungan`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_kunjungan_tanggalKunjungan`[0m[37m,[0m [37m`RekamMedis__RekamMedis_kunjungan`[0m[37m.[0m[37m`jamKunjungan`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_kunjungan_jamKunjungan`[0m[37m,[0m [37m`RekamMedis__RekamMedis_kunjungan`[0m[37m.[0m[37m`jenisKunjungan`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_kunjungan_jenisKunjungan`[0m[37m,[0m [37m`RekamMedis__RekamMedis_kunjungan`[0m[37m.[0m[37m`keluhan`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_kunjungan_keluhan`[0m[37m,[0m [37m`RekamMedis__RekamMedis_kunjungan`[0m[37m.[0m[37m`status`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_kunjungan_status`[0m[37m,[0m [37m`RekamMedis__RekamMedis_kunjungan`[0m[37m.[0m[37m`idPasien`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_kunjungan_idPasien`[0m[37m,[0m [37m`RekamMedis__RekamMedis_kunjungan`[0m[37m.[0m[37m`idPetugasPendaftaran`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_kunjungan_idPetugasPendaftaran`[0m[37m,[0m [37m`RekamMedis__RekamMedis_kunjungan`[0m[37m.[0m[37m`createdAt`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_kunjungan_createdAt`[0m[37m,[0m [37m`RekamMedis__RekamMedis_dokter`[0m[37m.[0m[37m`idUser`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_dokter_idUser`[0m[37m,[0m [37m`RekamMedis__RekamMedis_dokter`[0m[37m.[0m[37m`username`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_dokter_username`[0m[37m,[0m [37m`RekamMedis__RekamMedis_dokter`[0m[37m.[0m[37m`password`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_dokter_password`[0m[37m,[0m [37m`RekamMedis__RekamMedis_dokter`[0m[37m.[0m[37m`role`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_dokter_role`[0m[37m,[0m [37m`RekamMedis__RekamMedis_dokter`[0m[37m.[0m[37m`namaLengkap`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_dokter_namaLengkap`[0m[37m,[0m [37m`RekamMedis__RekamMedis_dokter`[0m[37m.[0m[37m`nip`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_dokter_nip`[0m[37m,[0m [37m`RekamMedis__RekamMedis_dokter`[0m[37m.[0m[37m`noTelp`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_dokter_noTelp`[0m[37m,[0m [37m`RekamMedis__RekamMedis_dokter`[0m[37m.[0m[37m`isActive`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_dokter_isActive`[0m[37m,[0m [37m`RekamMedis__RekamMedis_dokter`[0m[37m.[0m[37m`createdAt`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_dokter_createdAt`[0m[37m,[0m [37m`RekamMedis__RekamMedis_dokter`[0m[37m.[0m[37m`updatedAt`[0m [94mAS[0m [37m`RekamMedis__RekamMedis_dokter_updatedAt`[0m [94mFROM[0m [37m`rekam_medis`[0m [37m`RekamMedis`[0m [94mLEFT JOIN[0m [37m`kunjungan`[0m [37m`RekamMedis__RekamMedis_kunjungan`[0m [94mON[0m [37m`RekamMedis__RekamMedis_kunjungan`[0m[37m.[0m[37m`idKunjungan`[0m[37m=[0m[37m`RekamMedis`[0m[37m.[0m[37m`idKunjungan`[0m  [94mLEFT JOIN[0m [37m`users`[0m [37m`RekamMedis__RekamMedis_dokter`[0m [94mON[0m [37m`RekamMedis__RekamMedis_dokter`[0m[37m.[0m[37m`idUser`[0m[37m=[0m[37m`RekamMedis`[0m[37m.[0m[37m`idDokter`[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [95mCOUNT[0m[37m([0m[32m1[0m[37m)[0m [94mAS[0m [37m`cnt`[0m [94mFROM[0m [37m`resep`[0m [37m`Resep`[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [37m`Resep`[0m[37m.[0m[37m`idResep`[0m [94mAS[0m [37m`Resep_idResep`[0m[37m,[0m [37m`Resep`[0m[37m.[0m[37m`noResep`[0m [94mAS[0m [37m`Resep_noResep`[0m[37m,[0m [37m`Resep`[0m[37m.[0m[37m`idRekamMedis`[0m [94mAS[0m [37m`Resep_idRekamMedis`[0m[37m,[0m [37m`Resep`[0m[37m.[0m[37m`idDokter`[0m [94mAS[0m [37m`Resep_idDokter`[0m[37m,[0m [37m`Resep`[0m[37m.[0m[37m`idApoteker`[0m [94mAS[0m [37m`Resep_idApoteker`[0m[37m,[0m [37m`Resep`[0m[37m.[0m[37m`tanggalResep`[0m [94mAS[0m [37m`Resep_tanggalResep`[0m[37m,[0m [37m`Resep`[0m[37m.[0m[37m`status`[0m [94mAS[0m [37m`Resep_status`[0m[37m,[0m [37m`Resep`[0m[37m.[0m[37m`catatan`[0m [94mAS[0m [37m`Resep_catatan`[0m[37m,[0m [37m`Resep`[0m[37m.[0m[37m`tanggalDilayani`[0m [94mAS[0m [37m`Resep_tanggalDilayani`[0m[37m,[0m [37m`Resep`[0m[37m.[0m[37m`createdAt`[0m [94mAS[0m [37m`Resep_createdAt`[0m[37m,[0m [37m`Resep`[0m[37m.[0m[37m`updatedAt`[0m [94mAS[0m [37m`Resep_updatedAt`[0m [94mFROM[0m [37m`resep`[0m [37m`Resep`[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [95mCOUNT[0m[37m([0m[32m1[0m[37m)[0m [94mAS[0m [37m`cnt`[0m [94mFROM[0m [37m`resep_detail`[0m [37m`ResepDetail`[0m
+[90m[4mquery:[24m[39m [94mSELECT[0m [95mCOUNT[0m[37m([0m[32m1[0m[37m)[0m [94mAS[0m [37m`cnt`[0m [94mFROM[0m [37m`transaksi`[0m [37m`Transaksi`[0m
+✅ Database seeded successfully
+✅ Database seeded successfully
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m

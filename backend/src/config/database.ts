@@ -7,6 +7,7 @@ import { RekamMedis } from '../entities/RekamMedis';
 import { Obat } from '../entities/Obat';
 import { Resep } from '../entities/Resep';
 import { ResepDetail } from '../entities/ResepDetail';
+import { Transaksi } from '../entities/Transaksi';
 
 dotenv.config();
 
@@ -19,7 +20,7 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_DATABASE || 'puskesmas_db',
   synchronize: true, // Set false in production, use migrations
   logging: process.env.NODE_ENV === 'development',
-  entities: [User, Pasien, Kunjungan, RekamMedis, Obat, Resep, ResepDetail],
+  entities: [User, Pasien, Kunjungan, RekamMedis, Obat, Resep, ResepDetail, Transaksi],
   migrations: ['src/migrations/**/*.ts'],
   subscribers: [],
 });

@@ -2,6 +2,7 @@ export interface User {
   idUser: number;
   username: string;
   namaLengkap: string;
+  nama?: string; // Alias untuk namaLengkap
   role: UserRole;
   nip?: string;
   noTelp?: string;
@@ -9,6 +10,7 @@ export interface User {
 
 export enum UserRole {
   ADMIN = 'admin',
+  PASIEN = 'pasien',
   PENDAFTARAN = 'pendaftaran',
   DOKTER = 'dokter',
   APOTEKER = 'apoteker',
@@ -28,6 +30,7 @@ export interface Pasien {
   noBPJS?: string;
   golonganDarah?: string;
   riwayatAlergi?: string;
+  createdBy?: User;
   createdAt: string;
   updatedAt: string;
 }
@@ -40,6 +43,7 @@ export interface Kunjungan {
   jenisKunjungan: 'rawat_jalan' | 'kontrol' | 'darurat';
   keluhan?: string;
   status: 'terdaftar' | 'pemeriksaan' | 'farmasi' | 'selesai' | 'batal';
+  idPasien: number;
   pasien: Pasien;
   petugasPendaftaran: User;
   rekamMedis?: RekamMedis;
@@ -97,6 +101,31 @@ export interface ResepDetail {
   aturanPakai: string;
   keterangan?: string;
   obat: Obat;
+}
+
+export interface Transaksi {
+  idTransaksi: number;
+  noTransaksi: string;
+  tanggalTransaksi: string;
+  totalBiaya: number;
+  biayaPendaftaran: number;
+  biayaPemeriksaan: number;
+  biayaObat: number;
+  biayaTindakan: number;
+  diskon: number;
+  metodePembayaran: 'tunai' | 'transfer' | 'debit' | 'bpjs';
+  statusPembayaran: 'pending' | 'lunas' | 'dibatalkan';
+  statusVerifikasi: 'menunggu' | 'disetujui' | 'ditolak';
+  keterangan?: string;
+  catatanVerifikasi?: string;
+  tanggalVerifikasi?: string;
+  kunjungan: Kunjungan;
+  pasien: Pasien;
+  kasir?: User;
+  verifikator?: User;
+  resep?: Resep;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface DashboardData {

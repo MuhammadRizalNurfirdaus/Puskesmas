@@ -51,10 +51,14 @@ export default function ObatForm() {
   };
 
   return (
-    <div>
-      <h1 className="mb-20">{id ? 'Edit' : 'Tambah'} Obat</h1>
+    <div className="space-y-6">
+      <div className="bg-gradient-to-r from-brand-700 to-brand-900 rounded-2xl shadow-sm ring-1 ring-black/5 p-8 text-white">
+        <h1 className="text-3xl font-extrabold">{id ? 'Edit' : 'Tambah'} Obat</h1>
+        <p className="mt-2 text-white/80">Kelola data obat dan stok untuk kebutuhan apotek.</p>
+      </div>
 
       <div className="card">
+        <div className="card-body">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label className="form-label">Kode Obat *</label>
@@ -74,7 +78,7 @@ export default function ObatForm() {
               onChange={(e) => setFormData({ ...formData, deskripsi: e.target.value })} />
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             <div className="form-group">
               <label className="form-label">Satuan *</label>
               <select className="form-select" value={formData.satuan} required
@@ -94,7 +98,7 @@ export default function ObatForm() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             <div className="form-group">
               <label className="form-label">Stok *</label>
               <input type="number" className="form-input" value={formData.stok} required
@@ -108,15 +112,16 @@ export default function ObatForm() {
             </div>
           </div>
 
-          <div className="flex gap-10">
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
+            <button type="button" className="btn btn-ghost" onClick={() => navigate('/obat')}>
+              Batal
+            </button>
             <button type="submit" className="btn btn-primary" disabled={loading}>
               {loading ? 'Menyimpan...' : 'Simpan'}
             </button>
-            <button type="button" className="btn btn-secondary" onClick={() => navigate('/obat')}>
-              Batal
-            </button>
           </div>
         </form>
+        </div>
       </div>
     </div>
   );

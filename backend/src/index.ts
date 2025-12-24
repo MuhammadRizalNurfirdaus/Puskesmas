@@ -10,6 +10,7 @@ import rekamMedisRoutes from './routes/rekamMedisRoutes';
 import resepRoutes from './routes/resepRoutes';
 import obatRoutes from './routes/obatRoutes';
 import laporanRoutes from './routes/laporanRoutes';
+import transaksiRoutes from './routes/transaksiRoutes';
 import { seedDatabase } from './utils/seed';
 
 dotenv.config();
@@ -30,6 +31,7 @@ app.use('/api/rekam-medis', rekamMedisRoutes);
 app.use('/api/resep', resepRoutes);
 app.use('/api/obat', obatRoutes);
 app.use('/api/laporan', laporanRoutes);
+app.use('/api/transaksi', transaksiRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

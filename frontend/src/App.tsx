@@ -12,7 +12,11 @@ import ResepList from './pages/Resep/ResepList';
 import ResepForm from './pages/Resep/ResepForm';
 import ObatList from './pages/Obat/ObatList';
 import ObatForm from './pages/Obat/ObatForm';
-import Laporan from './pages/Laporan/Laporan';
+import TransaksiList from './pages/Transaksi/TransaksiList';
+import TransaksiForm from './pages/Transaksi/TransaksiForm';
+import TransaksiDetail from './pages/Transaksi/TransaksiDetail';
+import Laporan from './pages/Laporan/LaporanV2';
+import Antrian from './pages/Antrian/Antrian';
 import Layout from './components/Layout';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -42,6 +46,9 @@ function App() {
           <Route path="kunjungan" element={<KunjunganList />} />
           <Route path="kunjungan/tambah" element={<KunjunganForm />} />
           
+          {/* Antrian Route */}
+          <Route path="antrian" element={<Antrian />} />
+          
           {/* Rekam Medis Routes */}
           <Route path="rekam-medis" element={<RekamMedisList />} />
           <Route path="rekam-medis/tambah/:kunjunganId" element={<RekamMedisForm />} />
@@ -54,6 +61,11 @@ function App() {
           <Route path="obat" element={<ObatList />} />
           <Route path="obat/tambah" element={<ObatForm />} />
           <Route path="obat/edit/:id" element={<ObatForm />} />
+          
+          {/* Transaksi Routes */}
+          <Route path="transaksi" element={<TransaksiList />} />
+          <Route path="transaksi/tambah" element={<TransaksiForm />} />
+          <Route path="transaksi/:id" element={<TransaksiDetail />} />
           
           {/* Laporan Route */}
           <Route path="laporan" element={<Laporan />} />

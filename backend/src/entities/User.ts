@@ -6,6 +6,7 @@ import { Resep } from './Resep';
 
 export enum UserRole {
   ADMIN = 'admin',
+  PASIEN = 'pasien',
   PENDAFTARAN = 'pendaftaran',
   DOKTER = 'dokter',
   APOTEKER = 'apoteker',

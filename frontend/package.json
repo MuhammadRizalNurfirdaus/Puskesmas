@@ -9,10 +9,14 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.6.2",
+    "postcss": "^8.4.49",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",
-    "axios": "^1.6.2",
+    "recharts": "^2.12.7",
+    "tailwindcss": "^3.4.17",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
