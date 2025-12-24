@@ -133,6 +133,9 @@ export interface DashboardData {
   totalPasien: number;
   resepPending: number;
   obatStokRendah: number;
+  totalPembayaran?: number;
+  pembayaranMenunggu?: number;
+  jumlahMenungguVerifikasi?: number;
 }
 
 export interface LaporanKunjungan {

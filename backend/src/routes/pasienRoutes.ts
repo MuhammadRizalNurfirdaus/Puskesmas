@@ -8,8 +8,8 @@ const router = Router();
 
 router.use(authenticate);
 
-router.get('/', getAllPasien);
-router.get('/:id', getPasienById);
+router.get('/', authorize(UserRole.ADMIN, UserRole.PENDAFTARAN), getAllPasien);
+router.get('/:id', authorize(UserRole.ADMIN, UserRole.PENDAFTARAN), getPasienById);
 router.post('/', authorize(UserRole.ADMIN, UserRole.PENDAFTARAN), createPasien);
 router.put('/:id', authorize(UserRole.ADMIN, UserRole.PENDAFTARAN), updatePasien);
 

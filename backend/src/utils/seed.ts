@@ -20,69 +20,82 @@ export const seedDatabase = async () => {
     const resepDetailRepository = AppDataSource.getRepository(ResepDetail);
     const transaksiRepository = AppDataSource.getRepository(Transaksi);
 
-    // Check if users already exist
-    const userCount = await userRepository.count();
-    
-    if (userCount === 0) {
-      console.log('🌱 Seeding default users...');
-      
-      const defaultUsers = [
-        {
-          username: 'admin',
-          password: await bcrypt.hash('admin123', 10),
-          role: UserRole.ADMIN,
-          namaLengkap: 'Admin Sistem',
-          nip: '199001012020011001',
-          noTelp: '081234567890'
-        },
-        {
-          username: 'pasien',
-          password: await bcrypt.hash('pasien123', 10),
-          role: UserRole.PASIEN,
-          namaLengkap: 'John Doe (Pasien)',
-          noTelp: '081234567891'
-        },
-        {
-          username: 'pendaftaran',
-          password: await bcrypt.hash('pendaftaran123', 10),
-          role: UserRole.PENDAFTARAN,
-          namaLengkap: 'Petugas Pendaftaran',
-          nip: '199002022020012001',
-          noTelp: '081234567892'
-        },
-        {
-          username: 'dokter',
-          password: await bcrypt.hash('dokter123', 10),
-          role: UserRole.DOKTER,
-          namaLengkap: 'dr. Budi Santoso',
-          nip: '199003032020013001',
-          noTelp: '081234567893'
-        },
-        {
-          username: 'apoteker',
-          password: await bcrypt.hash('apoteker123', 10),
-          role: UserRole.APOTEKER,
-          namaLengkap: 'Apt. Siti Rahayu',
-          nip: '199004042020014001',
-          noTelp: '081234567894'
-        },
-        {
-          username: 'kepala',
-          password: await bcrypt.hash('kepala123', 10),
-          role: UserRole.KEPALA_PUSKESMAS,
-          namaLengkap: 'dr. Ahmad Wijaya, M.Kes',
-          nip: '198501012015011001',
-          noTelp: '081234567895'
-        }
-      ];
+    // Ensure default users exist (idempotent)
+    console.log('🌱 Ensuring default users exist...');
 
-      for (const userData of defaultUsers) {
-        const user = userRepository.create(userData);
-        await userRepository.save(user);
+    const defaultUsers = [
+      {
+        username: 'admin',
+        passwordPlain: 'admin123',
+        role: UserRole.ADMIN,
+        namaLengkap: 'Admin Sistem',
+        nip: '199001012020011001',
+        noTelp: '081234567890'
+      },
+      {
+        username: 'pasien',
+        passwordPlain: 'pasien123',
+        role: UserRole.PASIEN,
+        namaLengkap: 'John Doe (Pasien)',
+        noTelp: '081234567891'
+      },
+      {
+        username: 'pendaftaran',
+        passwordPlain: 'pendaftaran123',
+        role: UserRole.PENDAFTARAN,
+        namaLengkap: 'Petugas Pendaftaran',
+        nip: '199002022020012001',
+        noTelp: '081234567892'
+      },
+      {
+        username: 'dokter',
+        passwordPlain: 'dokter123',
+        role: UserRole.DOKTER,
+        namaLengkap: 'dr. Budi Santoso',
+        nip: '199003032020013001',
+        noTelp: '081234567893'
+      },
+      {
+        username: 'apoteker',
+        passwordPlain: 'apoteker123',
+        role: UserRole.APOTEKER,
+        namaLengkap: 'Apt. Siti Rahayu',
+        nip: '199004042020014001',
+        noTelp: '081234567894'
+      },
+      {
+        username: 'kepala',
+        passwordPlain: 'kepala123',
+        role: UserRole.KEPALA_PUSKESMAS,
+        namaLengkap: 'dr. Ahmad Wijaya, M.Kes',
+        nip: '198501012015011001',
+        noTelp: '081234567895'
+      }
+    ];
+
+    for (const userData of defaultUsers) {
+      const existing = await userRepository.findOne({ where: { username: userData.username } });
+      if (existing) {
+        if (!existing.isActive) {
+          existing.isActive = true;
+          await userRepository.save(existing);
+        }
+        continue;
       }
 
-      console.log('✅ Default users created successfully');
+      const password = await bcrypt.hash(userData.passwordPlain, 10);
+      const user = userRepository.create({
+        username: userData.username,
+        password,
+        role: userData.role,
+        namaLengkap: userData.namaLengkap,
+        nip: userData.nip,
+        noTelp: userData.noTelp
+      });
+      await userRepository.save(user);
     }
+
+    console.log('✅ Default users ensured');
 
     // Check if obat already exist
     const obatCount = await obatRepository.count();
@@ -837,3 +850,25 @@ export const seedDatabase = async () => {
     console.error('❌ Error seeding database:', error);
   }
 };
+
+// Allow running seeding directly: `npm run seed`
+// (Does not run when imported by the app)
+if (require.main === module) {
+  AppDataSource.initialize()
+    .then(async () => {
+      await seedDatabase();
+      await AppDataSource.destroy();
+      process.exit(0);
+    })
+    .catch(async (error) => {
+      console.error('❌ Error running seed:', error);
+      try {
+        if (AppDataSource.isInitialized) {
+          await AppDataSource.destroy();
+        }
+      } catch {
+        // ignore
+      }
+      process.exit(1);
+    });
+}

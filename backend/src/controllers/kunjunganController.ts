@@ -43,14 +43,23 @@ export const getKunjunganById = async (req: AuthRequest, res: Response) => {
 
     const kunjungan = await kunjunganRepository.findOne({
       where: { idKunjungan: parseInt(id) },
-      relations: ['pasien', 'petugasPendaftaran', 'rekamMedis', 'rekamMedis.dokter']
+      relations: [
+        'pasien', 
+        'petugasPendaftaran', 
+        'rekamMedis', 
+        'rekamMedis.dokter',
+        'rekamMedis.resep',
+        'rekamMedis.resep.detail',
+        'rekamMedis.resep.detail.obat',
+        'rekamMedis.resep.apoteker'
+      ]
     });
 
     if (!kunjungan) {
       return res.status(404).json({ message: 'Kunjungan tidak ditemukan' });
     }
 
-    res.json({ data: kunjungan });
+    res.json(kunjungan);
   } catch (error) {
     console.error('Error fetching kunjungan:', error);
     res.status(500).json({ message: 'Terjadi kesalahan pada server' });

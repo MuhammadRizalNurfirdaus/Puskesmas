@@ -17,6 +17,9 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+// Default to IPv6 any-address so connections to localhost (::1) work reliably.
+// Can be overridden via HOST env.
+const HOST = process.env.HOST || '::';
 
 // Middleware
 app.use(cors());
@@ -42,8 +45,9 @@ app.get('/api/health', (req, res) => {
 app.use(errorHandler);
 
 // Start server without waiting for database
-app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
+app.listen(Number(PORT), HOST, () => {
+  const printableHost = HOST === '::' ? 'localhost' : HOST;
+  console.log(`🚀 Server is running on: http://${printableHost}:${PORT}`);
   console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
 });
 

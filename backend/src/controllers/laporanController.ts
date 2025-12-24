@@ -4,6 +4,7 @@ import { Kunjungan } from '../entities/Kunjungan';
 import { Pasien, JenisKelamin, StatusPembayaran } from '../entities/Pasien';
 import { Obat } from '../entities/Obat';
 import { Resep, StatusResep } from '../entities/Resep';
+import { Transaksi } from '../entities/Transaksi';
 import { AuthRequest } from '../middleware/auth';
 import { Between } from 'typeorm';
 
@@ -103,6 +104,7 @@ export const getDashboardData = async (req: AuthRequest, res: Response) => {
     const pasienRepository = AppDataSource.getRepository(Pasien);
     const resepRepository = AppDataSource.getRepository(Resep);
     const obatRepository = AppDataSource.getRepository(Obat);
+    const transaksiRepository = AppDataSource.getRepository(Transaksi);
 
     const kunjunganHariIni = await kunjunganRepository.count({
       where: { tanggalKunjungan: today as any }
@@ -120,11 +122,34 @@ export const getDashboardData = async (req: AuthRequest, res: Response) => {
       .andWhere('obat.isActive = :isActive', { isActive: true })
       .getCount();
 
+    // Total pembayaran
+    const totalPembayaranResult = await transaksiRepository
+      .createQueryBuilder('transaksi')
+      .select('SUM(transaksi.totalBiaya)', 'total')
+      .where('transaksi.statusPembayaran = :status', { status: 'lunas' })
+      .getRawOne();
+
+    const totalPembayaran = parseFloat(totalPembayaranResult?.total || 0);
+
+    // Pembayaran menunggu verifikasi
+    const pembayaranMenungguResult = await transaksiRepository
+      .createQueryBuilder('transaksi')
+      .select('SUM(transaksi.totalBiaya)', 'total')
+      .addSelect('COUNT(*)', 'count')
+      .where('transaksi.statusVerifikasi = :status', { status: 'menunggu' })
+      .getRawOne();
+
+    const pembayaranMenunggu = parseFloat(pembayaranMenungguResult?.total || 0);
+    const jumlahMenungguVerifikasi = parseInt(pembayaranMenungguResult?.count || 0);
+
     res.json({
       kunjunganHariIni,
       totalPasien,
       resepPending,
-      obatStokRendah
+      obatStokRendah,
+      totalPembayaran,
+      pembayaranMenunggu,
+      jumlahMenungguVerifikasi
     });
   } catch (error) {
     console.error('Error fetching dashboard data:', error);

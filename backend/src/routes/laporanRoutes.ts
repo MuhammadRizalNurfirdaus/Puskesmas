@@ -9,8 +9,8 @@ const router = Router();
 router.use(authenticate);
 
 router.get('/dashboard', getDashboardData);
-router.get('/kunjungan', authorize(UserRole.ADMIN, UserRole.KEPALA_PUSKESMAS), getLaporanKunjungan);
-router.get('/pasien', authorize(UserRole.ADMIN, UserRole.KEPALA_PUSKESMAS), getStatistikPasien);
-router.get('/obat', authorize(UserRole.ADMIN, UserRole.KEPALA_PUSKESMAS, UserRole.APOTEKER), getLaporanStokObat);
+router.get('/kunjungan', getLaporanKunjungan);
+router.get('/pasien', getStatistikPasien);
+router.get('/obat', getLaporanStokObat);
 
 export default router;

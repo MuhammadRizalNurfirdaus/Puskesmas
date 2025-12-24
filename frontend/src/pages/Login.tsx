@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../stores/authStore';
+import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -8,7 +9,7 @@ export default function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
-  const { login } = useAuthStore();
+  const { login, googleLogin } = useAuthStore();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -18,6 +19,25 @@ export default function Login() {
 
     try {
       await login(username, password);
+      navigate('/');
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse: CredentialResponse) => {
+    const idToken = credentialResponse.credential;
+    if (!idToken) {
+      setError('Login Google gagal: token tidak ditemukan');
+      return;
+    }
+
+    setError('');
+    setLoading(true);
+    try {
+      await googleLogin(idToken);
       navigate('/');
     } catch (err: any) {
       setError(err.message);
@@ -103,6 +123,26 @@ export default function Login() {
                 <button type="submit" className="btn btn-primary w-full" disabled={loading}>
                   {loading ? 'Memproses…' : 'Login'}
                 </button>
+
+                <div className="flex items-center gap-3">
+                  <div className="h-px flex-1 bg-gray-200" />
+                  <span className="text-sm text-gray-600">atau</span>
+                  <div className="h-px flex-1 bg-gray-200" />
+                </div>
+
+                <div className="flex justify-center">
+                  {loading ? (
+                    <button type="button" className="btn btn-ghost w-full" disabled>
+                      Memproses…
+                    </button>
+                  ) : (
+                    <GoogleLogin
+                      onSuccess={handleGoogleSuccess}
+                      onError={() => setError('Login Google gagal')}
+                      useOneTap={false}
+                    />
+                  )}
+                </div>
               </form>
               
               <div className="mt-8 pt-6 border-t border-gray-200">

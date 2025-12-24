@@ -8,6 +8,7 @@ interface AuthState {
   token: string | null;
   isAuthenticated: boolean;
   login: (username: string, password: string) => Promise<void>;
+  googleLogin: (idToken: string) => Promise<void>;
   logout: () => void;
   setUser: (user: User) => void;
 }
@@ -30,6 +31,20 @@ export const useAuthStore = create<AuthState>()(
           set({ user, token, isAuthenticated: true });
         } catch (error: any) {
           throw new Error(error.response?.data?.message || 'Login gagal');
+        }
+      },
+
+      googleLogin: async (idToken: string) => {
+        try {
+          const response = await api.post('/auth/google', { idToken });
+          const { token, user } = response.data;
+
+          localStorage.setItem('token', token);
+          localStorage.setItem('user', JSON.stringify(user));
+
+          set({ user, token, isAuthenticated: true });
+        } catch (error: any) {
+          throw new Error(error.response?.data?.message || 'Login Google gagal');
         }
       },
       

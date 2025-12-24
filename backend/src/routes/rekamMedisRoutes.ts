@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getRekamMedisByPasien, getRekamMedisById, createRekamMedis, updateRekamMedis } from '../controllers/rekamMedisController';
+import { getAllRekamMedis, getRekamMedisByPasien, getRekamMedisById, createRekamMedis, updateRekamMedis } from '../controllers/rekamMedisController';
 import { authenticate } from '../middleware/auth';
 import { authorize } from '../middleware/authorize';
 import { UserRole } from '../entities/User';
@@ -8,6 +8,7 @@ const router = Router();
 
 router.use(authenticate);
 
+router.get('/', getAllRekamMedis);
 router.get('/pasien/:pasienId', getRekamMedisByPasien);
 router.get('/:id', getRekamMedisById);
 router.post('/', authorize(UserRole.ADMIN, UserRole.DOKTER), createRekamMedis);

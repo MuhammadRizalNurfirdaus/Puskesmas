@@ -118,7 +118,7 @@ const TransaksiList = () => {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500 hover:shadow-lg transition-shadow">
           <div className="flex items-center justify-between">
             <div>
@@ -136,7 +136,7 @@ const TransaksiList = () => {
         <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500 hover:shadow-lg transition-shadow">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-sm font-medium">Lunas</p>
+              <p className="text-gray-600 text-sm font-medium">Transaksi Lunas</p>
               <p className="text-3xl font-bold text-gray-800 mt-2">
                 {transaksi.filter(t => t.statusPembayaran === 'lunas').length}
               </p>
@@ -144,6 +144,49 @@ const TransaksiList = () => {
             <div className="bg-blue-100 p-4 rounded-full">
               <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-purple-500 hover:shadow-lg transition-shadow">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-gray-600 text-sm font-medium">Total Uang Lunas</p>
+              <p className="text-2xl font-bold text-gray-800 mt-2">
+                {formatCurrency(
+                  transaksi
+                    .filter(t => t.statusPembayaran === 'lunas')
+                    .reduce((sum, t) => sum + t.totalBiaya, 0)
+                )}
+              </p>
+            </div>
+            <div className="bg-purple-100 p-4 rounded-full">
+              <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-md p-6 border-l-4 border-yellow-500 hover:shadow-lg transition-shadow">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-gray-600 text-sm font-medium">Menunggu Verifikasi</p>
+              <p className="text-2xl font-bold text-gray-800 mt-2">
+                {formatCurrency(
+                  transaksi
+                    .filter(t => t.statusVerifikasi === 'menunggu')
+                    .reduce((sum, t) => sum + t.totalBiaya, 0)
+                )}
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                {transaksi.filter(t => t.statusVerifikasi === 'menunggu').length} transaksi
+              </p>
+            </div>
+            <div className="bg-yellow-100 p-4 rounded-full">
+              <svg className="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
           </div>

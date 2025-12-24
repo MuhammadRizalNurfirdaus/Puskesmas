@@ -4,6 +4,26 @@ import { RekamMedis } from '../entities/RekamMedis';
 import { Kunjungan, StatusKunjungan } from '../entities/Kunjungan';
 import { AuthRequest } from '../middleware/auth';
 
+export const getAllRekamMedis = async (req: AuthRequest, res: Response) => {
+  try {
+    const rekamMedisRepository = AppDataSource.getRepository(RekamMedis);
+
+    const rekamMedis = await rekamMedisRepository
+      .createQueryBuilder('rm')
+      .leftJoinAndSelect('rm.kunjungan', 'kunjungan')
+      .leftJoinAndSelect('kunjungan.pasien', 'pasien')
+      .leftJoinAndSelect('rm.dokter', 'dokter')
+      .leftJoinAndSelect('rm.resep', 'resep')
+      .orderBy('rm.createdAt', 'DESC')
+      .getMany();
+
+    res.json({ data: rekamMedis });
+  } catch (error) {
+    console.error('Error fetching all rekam medis:', error);
+    res.status(500).json({ message: 'Terjadi kesalahan pada server' });
+  }
+};
+
 export const getRekamMedisByPasien = async (req: AuthRequest, res: Response) => {
   try {
     const { pasienId } = req.params;

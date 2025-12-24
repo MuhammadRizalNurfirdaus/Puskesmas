@@ -82,11 +82,20 @@ echo -e "${BLUE}   Starting Backend Server      ${NC}"
 echo -e "${BLUE}=================================${NC}"
 echo ""
 
-# Kill any existing process on port 5000
-if sudo lsof -ti:5000 >/dev/null 2>&1; then
-    echo -e "${YELLOW}⚠️  Port 5000 is in use. Killing existing process...${NC}"
-    sudo lsof -ti:5000 | xargs -r sudo kill -9
-    sleep 1
+# PID files (so we can stop without sudo)
+BACKEND_PID_FILE=".backend.pid"
+FRONTEND_PID_FILE=".frontend.pid"
+
+# Best-effort cleanup of an existing backend process
+if [ -f "$BACKEND_PID_FILE" ]; then
+    OLD_BACKEND_PID=$(cat "$BACKEND_PID_FILE" 2>/dev/null)
+    if [ -n "$OLD_BACKEND_PID" ] && ps -p "$OLD_BACKEND_PID" >/dev/null 2>&1; then
+        echo -e "${YELLOW}⚠️  Found existing backend PID ($OLD_BACKEND_PID). Stopping...${NC}"
+        kill "$OLD_BACKEND_PID" >/dev/null 2>&1 || true
+        sleep 1
+        kill -9 "$OLD_BACKEND_PID" >/dev/null 2>&1 || true
+    fi
+    rm -f "$BACKEND_PID_FILE" >/dev/null 2>&1 || true
 fi
 
 # Start backend in background
@@ -94,6 +103,7 @@ cd backend
 echo -e "${GREEN}Starting backend server...${NC}"
 npm run dev > ../backend.log 2>&1 &
 BACKEND_PID=$!
+echo "$BACKEND_PID" > "../$BACKEND_PID_FILE"
 cd ..
 
 sleep 3
@@ -115,11 +125,16 @@ echo -e "${BLUE}   Starting Frontend            ${NC}"
 echo -e "${BLUE}=================================${NC}"
 echo ""
 
-# Kill any existing process on port 5173 (Vite default)
-if sudo lsof -ti:5173 >/dev/null 2>&1; then
-    echo -e "${YELLOW}⚠️  Port 5173 is in use. Killing existing process...${NC}"
-    sudo lsof -ti:5173 | xargs -r sudo kill -9
-    sleep 1
+# Best-effort cleanup of an existing frontend process
+if [ -f "$FRONTEND_PID_FILE" ]; then
+    OLD_FRONTEND_PID=$(cat "$FRONTEND_PID_FILE" 2>/dev/null)
+    if [ -n "$OLD_FRONTEND_PID" ] && ps -p "$OLD_FRONTEND_PID" >/dev/null 2>&1; then
+        echo -e "${YELLOW}⚠️  Found existing frontend PID ($OLD_FRONTEND_PID). Stopping...${NC}"
+        kill "$OLD_FRONTEND_PID" >/dev/null 2>&1 || true
+        sleep 1
+        kill -9 "$OLD_FRONTEND_PID" >/dev/null 2>&1 || true
+    fi
+    rm -f "$FRONTEND_PID_FILE" >/dev/null 2>&1 || true
 fi
 
 # Start frontend in background
@@ -127,6 +142,7 @@ cd frontend
 echo -e "${GREEN}Starting frontend server...${NC}"
 npm run dev > ../frontend.log 2>&1 &
 FRONTEND_PID=$!
+echo "$FRONTEND_PID" > "../$FRONTEND_PID_FILE"
 cd ..
 
 sleep 3

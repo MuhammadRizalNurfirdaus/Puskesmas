@@ -162,20 +162,20 @@ export default function LaporanV2() {
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
             <div>
-              <label className="label text-white/90">Tanggal mulai</label>
+              <label className="block text-sm font-semibold text-white mb-2">Tanggal mulai</label>
               <input
                 type="date"
-                className="input"
+                className="block w-full px-4 py-2.5 bg-white border border-white/20 rounded-xl text-gray-900 font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                 value={startDate}
                 max={endDate}
                 onChange={(e) => setStartDate(e.target.value)}
               />
             </div>
             <div>
-              <label className="label text-white/90">Tanggal akhir</label>
+              <label className="block text-sm font-semibold text-white mb-2">Tanggal akhir</label>
               <input
                 type="date"
-                className="input"
+                className="block w-full px-4 py-2.5 bg-white border border-white/20 rounded-xl text-gray-900 font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                 value={endDate}
                 min={startDate}
                 max={todayISO}
@@ -183,7 +183,7 @@ export default function LaporanV2() {
               />
             </div>
             <button
-              className="btn bg-white text-brand-800 hover:bg-white/90"
+              className="btn bg-white text-brand-800 hover:bg-white/90 px-6 py-2.5 rounded-xl font-semibold shadow-sm transition-colors"
               onClick={fetchLaporanKunjungan}
               disabled={loadingKunjungan || !startDate || !endDate}
             >

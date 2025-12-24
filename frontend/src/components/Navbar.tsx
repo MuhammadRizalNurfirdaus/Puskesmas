@@ -51,7 +51,6 @@ export default function Navbar() {
             <MenuItem to="/antrian" icon={<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>} label="Lihat Antrian" />
             <MenuItem to="/kunjungan" icon={<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>} label="Riwayat Kunjungan" />
             <MenuItem to="/transaksi" icon={<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>} label="Riwayat Pembayaran" />
-            <MenuItem to="/pasien" icon={<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>} label="Data Pasien" />
           </>
         );
       
@@ -126,7 +125,7 @@ export default function Navbar() {
       <div className="p-4 border-t border-white/10">
         <div className="flex items-center gap-3 mb-3 p-3 bg-white/5 rounded-2xl ring-1 ring-white/10">
           <div className="w-10 h-10 bg-gradient-to-br from-brand-500 to-emerald-500 rounded-full flex items-center justify-center font-extrabold text-white shadow-md">
-            {user?.namaLengkap?.charAt(0).toUpperCase()}
+            {(user?.namaLengkap?.[0]?.toUpperCase() ?? '?')}
           </div>
           <div className="flex-1 min-w-0">
             <p className="font-semibold truncate">{user?.namaLengkap}</p>
