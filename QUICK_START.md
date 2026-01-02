@@ -35,11 +35,13 @@ Jika muncul "Database Ready!", database sudah siap! ✅
 ### Langkah 3: Jalankan Aplikasi
 
 #### Cara Otomatis (Recommended):
+
 ```bash
 ./start-app.sh
 ```
 
 #### Cara Manual:
+
 ```bash
 # Terminal 1 - Backend
 cd backend
@@ -59,13 +61,13 @@ npm run dev
 
 Gunakan salah satu akun berikut untuk login:
 
-| Role | Username | Password |
-|------|----------|----------|
-| Admin | admin | admin123 |
-| Pendaftaran | pendaftaran | pendaftaran123 |
-| Dokter | dokter | dokter123 |
-| Apoteker | apoteker | apoteker123 |
-| Kepala Puskesmas | kepala | kepala123 |
+| Role             | Username    | Password       |
+| ---------------- | ----------- | -------------- |
+| Admin            | admin       | admin123       |
+| Pendaftaran      | pendaftaran | pendaftaran123 |
+| Dokter           | dokter      | dokter123      |
+| Apoteker         | apoteker    | apoteker123    |
+| Kepala Puskesmas | kepala      | kepala123      |
 
 ---
 
@@ -82,6 +84,7 @@ Atau manual dengan `Ctrl+C` di masing-masing terminal.
 ## 📝 Troubleshooting
 
 ### Port sudah digunakan?
+
 ```bash
 # Kill process di port 5000 (backend)
 sudo lsof -ti:5000 | xargs -r sudo kill -9
@@ -91,11 +94,13 @@ sudo lsof -ti:5173 | xargs -r sudo kill -9
 ```
 
 ### Database connection error?
+
 - Pastikan MariaDB running: `sudo systemctl status mariadb`
 - Cek kredensial di `backend/.env`
 - Ulang setup database (Langkah 1-2)
 
 ### Dependencies error?
+
 ```bash
 # Install ulang dependencies
 cd backend && npm install

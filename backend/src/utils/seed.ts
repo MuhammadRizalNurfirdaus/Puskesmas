@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { AppDataSource } from '../config/database';
 import { User, UserRole } from '../entities/User';
 import { Obat } from '../entities/Obat';
@@ -76,10 +76,44 @@ export const seedDatabase = async () => {
     for (const userData of defaultUsers) {
       const existing = await userRepository.findOne({ where: { username: userData.username } });
       if (existing) {
+        let hasChanges = false;
+
         if (!existing.isActive) {
           existing.isActive = true;
+          hasChanges = true;
+        }
+
+        if (existing.role !== userData.role) {
+          existing.role = userData.role;
+          hasChanges = true;
+        }
+
+        if (existing.namaLengkap !== userData.namaLengkap) {
+          existing.namaLengkap = userData.namaLengkap;
+          hasChanges = true;
+        }
+
+        if (existing.nip !== userData.nip) {
+          existing.nip = userData.nip;
+          hasChanges = true;
+        }
+
+        if (existing.noTelp !== userData.noTelp) {
+          existing.noTelp = userData.noTelp;
+          hasChanges = true;
+        }
+
+        // Ensure password always matches the documented demo credentials
+        const passwordValid = await bcrypt.compare(userData.passwordPlain, existing.password);
+        if (!passwordValid) {
+          existing.password = await bcrypt.hash(userData.passwordPlain, 10);
+          hasChanges = true;
+        }
+
+        if (hasChanges) {
           await userRepository.save(existing);
         }
+
         continue;
       }
 
