@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Sistem Informasi Puskesmas",
   "scripts": {
+    "start": "PORT=4110 cd backend && npm start",
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
