@@ -1,5 +1,10 @@
 # Sistem Informasi Manajemen Puskesmas
 
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)
+
 **Nama**: Muhammad Rizal Nurfirdaus  
 **NIM**: 20230810088  
 **Kelas**: TINFC-2023-04  
@@ -158,33 +163,35 @@ cd ..
    Kemudian jalankan SQL commands berikut:
    ```sql
    CREATE DATABASE IF NOT EXISTS puskesmas_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-   CREATE USER IF NOT EXISTS 'puskesmas_user'@'localhost' IDENTIFIED BY 'puskesmas123';
-   GRANT ALL PRIVILEGES ON puskesmas_db.* TO 'puskesmas_user'@'localhost';
+   CREATE USER IF NOT EXISTS 'your_db_user'@'localhost' IDENTIFIED BY 'your_secure_password';
+   GRANT ALL PRIVILEGES ON puskesmas_db.* TO 'your_db_user'@'localhost';
    FLUSH PRIVILEGES;
    EXIT;
    ```
    
+   > ⚠️ **Penting:** Ganti `your_db_user` dan `your_secure_password` dengan kredensial yang Anda inginkan.
+   
    **Test koneksi database:**
    ```bash
-   mariadb -u puskesmas_user -ppuskesmas123 puskesmas_db -e "SELECT 'Database Connected!' as Status;"
+   mariadb -u your_db_user -p puskesmas_db -e "SELECT 'Database Connected!' as Status;"
    ```
    
    **Catatan:** Untuk panduan lengkap setup database, lihat file `DATABASE_SETUP.md`
 
 6. **Konfigurasi Environment Variables**
 
-   File `.env` sudah tersedia di folder `backend/` dan `frontend/` dengan konfigurasi default yang siap pakai:
+   Buat file `.env` di folder `backend/` dan `frontend/` dengan konfigurasi berikut:
    
    **Backend** (`backend/.env`):
    ```env
    DB_HOST=localhost
    DB_PORT=3306
-   DB_USER=puskesmas_user
-   DB_PASSWORD=puskesmas123
+   DB_USER=your_db_user
+   DB_PASSWORD=your_db_password
    DB_NAME=puskesmas_db
    
    PORT=5000
-   JWT_SECRET=your-secret-key-here
+   JWT_SECRET=your-secure-jwt-secret-key
    
    GOOGLE_CLIENT_ID=your-google-client-id
    ```
@@ -195,7 +202,12 @@ cd ..
    VITE_GOOGLE_CLIENT_ID=your-google-client-id
    ```
    
-   > **Opsional:** Jika ingin menggunakan Google Login, ubah `GOOGLE_CLIENT_ID` dengan Client ID Anda dari [Google Cloud Console](https://console.cloud.google.com/)
+   > ⚠️ **Penting:** Ganti semua nilai `your-*` dengan kredensial Anda sendiri. Jangan pernah commit file `.env` ke repository!
+   >
+   > **Tips Keamanan:**
+   > - Gunakan password database yang kuat
+   > - Generate JWT_SECRET yang aman (minimal 32 karakter random)
+   > - Dapatkan Google Client ID dari [Google Cloud Console](https://console.cloud.google.com/) jika ingin menggunakan Google Login
 
 7. **Jalankan Aplikasi**
 
@@ -240,12 +252,14 @@ Setelah setup, aplikasi otomatis membuat user default yang bisa Anda gunakan unt
 
 | Role | Username | Password | Deskripsi |
 |------|----------|----------|-----------|
-| Admin | `admin` | `admin123` | Full access ke semua fitur |
-| Pendaftaran | `pendaftaran` | `pendaftaran123` | Daftar pasien & kunjungan |
-| Dokter | `dokter` | `dokter123` | Periksa pasien & buat resep |
-| Apoteker | `apoteker` | `apoteker123` | Kelola resep & stok obat |
-| Kepala Puskesmas | `kepala` | `kepala123` | Laporan & verifikasi pembayaran |
-| Pasien | `pasien` | `pasien123` | Lihat riwayat kunjungan sendiri |
+| Admin | `admin` | *(lihat seed.ts)* | Full access ke semua fitur |
+| Pendaftaran | `pendaftaran` | *(lihat seed.ts)* | Daftar pasien & kunjungan |
+| Dokter | `dokter` | *(lihat seed.ts)* | Periksa pasien & buat resep |
+| Apoteker | `apoteker` | *(lihat seed.ts)* | Kelola resep & stok obat |
+| Kepala Puskesmas | `kepala` | *(lihat seed.ts)* | Laporan & verifikasi pembayaran |
+| Pasien | `pasien` | *(lihat seed.ts)* | Lihat riwayat kunjungan sendiri |
+
+> 📝 **Catatan:** Password default dapat dilihat di file `backend/src/utils/seed.ts`. Untuk keamanan produksi, ubah semua password default setelah deployment.
 
 **Atau login dengan Google OAuth** untuk membuat akun pasien baru secara otomatis.
 
@@ -460,12 +474,14 @@ Edit file `.env` dengan konfigurasi database Anda:
 ```env
 DB_HOST=localhost
 DB_PORT=3306
-DB_USERNAME=root
-DB_PASSWORD=your_password
+DB_USERNAME=your_db_user
+DB_PASSWORD=your_secure_password
 DB_NAME=puskesmas_db
-JWT_SECRET=your_jwt_secret_key
+JWT_SECRET=your_secure_jwt_secret
 PORT=5000
 ```
+
+> ⚠️ **Keamanan:** Jangan gunakan kredensial default. Buat password yang kuat dan unik untuk environment Anda.
 
 ### 4. Buat Database MySQL
 Buka MySQL client dan jalankan:
@@ -490,6 +506,35 @@ Buka browser dan akses `http://localhost:3000` untuk menggunakan aplikasi.
 ## Repository
 
 GitHub: [https://github.com/MuhammadRizalNurfirdaus/Puskesmas.git](https://github.com/MuhammadRizalNurfirdaus/Puskesmas.git)
+
+## 🔒 Keamanan
+
+Proyek ini mengikuti praktik keamanan terbaik:
+- ✅ File `.env` tidak disertakan dalam repository (ada di `.gitignore`)
+- ✅ Password di-hash menggunakan bcryptjs
+- ✅ JWT untuk autentikasi yang aman
+- ✅ Role-based access control (RBAC)
+- ✅ Input validation pada semua endpoint
+
+**Rekomendasi untuk Production:**
+1. Gunakan HTTPS untuk semua koneksi
+2. Ganti semua kredensial default
+3. Set JWT_SECRET dengan string random yang panjang
+4. Aktifkan rate limiting pada API
+5. Backup database secara berkala
+
+## 📝 Changelog
+
+### v1.0.0 (Latest)
+- ✨ Sistem autentikasi dengan JWT dan Google OAuth
+- ✨ Manajemen pasien lengkap dengan CRUD
+- ✨ Sistem kunjungan dan antrian digital
+- ✨ Rekam medis elektronik terintegrasi
+- ✨ Manajemen resep dan farmasi
+- ✨ Sistem transaksi dengan verifikasi kepala puskesmas
+- ✨ Dashboard dan laporan statistik dengan grafik
+- 🐛 Fix import issues dengan bcryptjs
+- 🔧 Refactor untuk performa lebih baik
 
 ## Lisensi
 
