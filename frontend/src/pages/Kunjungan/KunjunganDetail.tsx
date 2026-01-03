@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import { Kunjungan } from '../../types';
 
@@ -201,7 +201,7 @@ export default function KunjunganDetail() {
                 <label className="block text-sm font-semibold text-gray-600 mb-1">Dokter Pemeriksa</label>
                 <p className="text-lg font-semibold text-gray-900">{kunjungan.rekamMedis.dokter?.namaLengkap || '-'}</p>
               </div>
-              
+
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {kunjungan.rekamMedis.tekananDarah && (
                   <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
@@ -294,12 +294,11 @@ export default function KunjunganDetail() {
                               </p>
                             )}
                           </div>
-                          <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold ${
-                            resep.status === 'selesai' ? 'bg-green-100 text-green-800' :
-                            resep.status === 'diproses' ? 'bg-blue-100 text-blue-800' :
-                            resep.status === 'batal' ? 'bg-red-100 text-red-800' :
-                            'bg-yellow-100 text-yellow-800'
-                          }`}>
+                          <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold ${resep.status === 'selesai' ? 'bg-green-100 text-green-800' :
+                              resep.status === 'diproses' ? 'bg-blue-100 text-blue-800' :
+                                resep.status === 'batal' ? 'bg-red-100 text-red-800' :
+                                  'bg-yellow-100 text-yellow-800'
+                            }`}>
                             {resep.status.toUpperCase()}
                           </span>
                         </div>
